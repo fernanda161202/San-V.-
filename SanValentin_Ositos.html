@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffccdc;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        #botones {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        #si {
+            background-color: #ff4081;
+            color: white;
+        }
+        #no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+        #mensaje {
+            display: none;
+            font-size: 24px;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+        .osito {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            animation: flotar 5s infinite alternate ease-in-out;
+        }
+        @keyframes flotar {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mi amorcito, ¿quieres ser mi San Valentín? 💖</h1>
+    
+    <div id="botones">
+        <button id="si" onclick="aceptar()">Sí, por favor 💕</button>
+        <button id="no" onmouseover="moverBoton()">No 😢</button>
+    </div>
+
+    <p id="mensaje">¡Yeee! Será el mejor San Valentín virtual, mi osito de miel 🐻🍯💘</p>
+
+    <script>
+        function aceptar() {
+            document.getElementById("mensaje").style.display = "block";
+            document.getElementById("botones").style.display = "none";
+        }
+
+        function moverBoton() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            let noBtn = document.getElementById("no");
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        function crearOsitos() {
+            for (let i = 0; i < 10; i++) {
+                let osito = document.createElement("div");
+                osito.innerHTML = "🐻";
+                osito.className = "osito";
+                osito.style.left = Math.random() * window.innerWidth + "px";
+                osito.style.top = Math.random() * window.innerHeight + "px";
+                osito.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(osito);
+            }
+        }
+
+        window.onload = crearOsitos;
+    </script>
+
+</body>
+</html>
